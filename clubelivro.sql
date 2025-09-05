@@ -36,3 +36,37 @@ CREATE TABLE VENDEDORES (
     NOME_VENDEDOR VARCHAR(255) NOT NULL,
  PRIMARY KEY (ID_VENDEDOR)
 );
+
+/*Cria uma integridade referencial entre as tabelas*/
+alter table vendas add constraint fk_vendas_vendedores
+foreign key (ID_VENDEDOR)
+references vendedores(ID_VENDEDOR)
+on delete no action
+on update no action  
+
+/*Anula as FK's antes de cadastrar algo*/
+set FOREIGN_KEY_CHECKS = 0;
+
+
+/* Add Livros a tabela livros*/
+Insert into livros values(
+	1,
+    "Percy Jackson e o Ladrão de Raios",
+    "Rick Riordan",
+    "Intrínseca",
+    "Aventura",
+    35.65
+);
+
+/*Selecionar todos os itens de uma tabela*/
+select * from livros;
+
+/*Selecionar apenas um item especfico de uma tabela*/
+select NOME_LIVRO from livros;
+
+/* Colocar um apelido para uma coluna da tabela*/
+select ID_LIVRO as "Código do Livro" from livros;
+
+/**/
+select * from livros
+where CATEGORIA = "POESIA";
