@@ -11,7 +11,7 @@ CREATE TABLE LIVROS(
     PRECO DECIMAL(5,2) NOT NULL,
     
     PRIMARY KEY (ID_LIVRO)
-)
+);
 
 /* CRIAR A TABLE ESTOQUE*/
 CREATE TABLE ESTOQUE (
@@ -46,7 +46,7 @@ on update no action;
 
 Alter Table ESTOQUE add constraint FK_ESTOQUE_LIVROS
 foreign key (ID_LIVRO)
- REFERENCES LIVRO (ID_LIVRO)
+ REFERENCES LIVROS (ID_LIVRO)
 on delete no action
 on update no action;
 
@@ -54,7 +54,7 @@ alter table vendas add constraint fk_vendas_vendedores
 foreign key (ID_VENDEDOR)
 references vendedores(ID_VENDEDOR)
 on delete no action
-on update no action  
+on update no action ;
 
 /*Anula as FK's antes de cadastrar algo*/
 set FOREIGN_KEY_CHECKS = 0;
